@@ -10,7 +10,7 @@ binding = "AI"
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "piktobot"
-database_id = "90838513-0137-41f5-9282-21d15c641d07"
+database_id = "8fd05bb0-7dc5-464a-9c19-278f39250029"
 
 [[r2_buckets]]
 binding = "R2"
