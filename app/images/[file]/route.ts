@@ -3,10 +3,6 @@ import { NextRequest } from "next/server";
 
 export const runtime = 'edge';
 
-// export default function Page({ params }: { params: { file: string } }) {
-//     return <div>My Post: { params.file } </div>
-// }
-
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const fileName = searchParams.get("file");

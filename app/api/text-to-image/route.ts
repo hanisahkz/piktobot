@@ -51,7 +51,15 @@ export async function POST(request: NextRequest) {
   const fileBlob = new Blob([Buffer.from(value)], { type: "image/png" });
   await getRequestContext().env.R2.put(fileName, fileBlob);
 
+  const savePrompt = await getRequestContext().env.DB.prepare(
+    `INSERT INTO history (prompt, image)
+        VALUES (?1, ?2)`
+  )
+    .bind(prompt, fileName)
+    .run();
+
   return NextResponse.json({
-    file: fileName
+    file: fileName,
+    id: savePrompt.meta.last_row_id,
   });
 }
