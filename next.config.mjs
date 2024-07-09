@@ -17,6 +17,12 @@ const nextConfig = {
         port: '',
         pathname: '/CRDImages/ad/original/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.imgur.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

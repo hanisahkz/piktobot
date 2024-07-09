@@ -21,7 +21,6 @@ const config = {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -52,9 +51,9 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-
-
-        
+        'cf-orange-1': '#f6821f',
+        'cf-orange-2': '#e06d10',
+        'cf-none': 'transparent'       
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -75,7 +74,7 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-    },
+    }
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config

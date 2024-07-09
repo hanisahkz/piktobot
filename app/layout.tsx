@@ -4,9 +4,9 @@ import { inter } from "./fonts";
 import "./globals.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import { PageHeaderHeading } from "@/components/page-header";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import clsx from "clsx";
 
 const links = [
   {
@@ -30,18 +30,17 @@ export default function RootLayout({
   return (
     <QueryClientProvider client={queryClient}>
       <html lang="en">
-        <body className={inter.className}>
-          <div className="flex p-24">
+        <body className={`${inter.className} antialiased` }>
+          <div className="flex items-center justify-center gap-4 p-24">
             {links.map((link, index) => (
                 <Link
                   href={link.href}
                   key={link.href}
-                  className={cn(
-                    "flex h-7 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
-                    pathname?.startsWith(link.href) ||
-                      (index === 0 && pathname === "/")
-                      ? "bg-muted font-medium text-primary"
-                      : "text-muted-foreground"
+                  className={clsx(
+                    'flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-cf-orange-2 md:flex-none md:justify-start md:p-2 md:px-3',
+                    {
+                      'text-cf-orange-1': pathname === link.href,
+                    },
                   )}
                 >
                   {link.name}

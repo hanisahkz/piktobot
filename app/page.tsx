@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { useImageQuery } from "./hooks/useImageQuery";
+import { ArrowUp } from "lucide-react";
 
 export default function Home() {
   const [promptInput, setPromptInput] = useState("")
@@ -33,32 +34,38 @@ export default function Home() {
     )
   }
 
+  const renderSpinner = () => {
+    return (
+      <div className="flex items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-orange-500 border-t-transparent" />
+      </div>
+    )
+  }
+
   return (
     <main className="flex flex-col items-center gap-6 w-full max-w-3xl mx-auto">
       <div className="relative w-full mt-6">
         <section>
-          <Card className="w-full max-w-2xl">
-          <CardContent className="p-6 space-y-4">
-            <div className="flex items-start gap-4">
-              <div className="flex-1">
-                <Textarea
-                  id="promptInputArea"
-                  placeholder="Enter your prompt..."
-                  className="min-h-[100px] rounded-2xl resize-none p-4 border border-neutral-400 shadow-sm"
-                  value={promptInput}
-                  onChange={(e) => setPromptInput(e.target.value)}
-                />
-                <div className="flex justify-end mt-2">
-                  <Button onClick={() => handlePrompt()}>Find image</Button>
-                </div>
-              </div>
+          <div className="flex items-start gap-4 pt-5">
+            <div className="relative flex-1">
+              <Textarea
+                placeholder="Type your prompt here..."
+                className="w-full p-4 text-lg rounded-md border-2 outline-none focus:border-cf-orange-1 focus:ring-cf-none pr-16"
+                rows={3}
+                value={promptInput}
+                onChange={(e) => setPromptInput(e.target.value)}
+              />
+              <Button type="submit" size="icon" className="bg-cf-orange-1 absolute w-8 h-8 top-3 right-3" onClick={() => handlePrompt()}>
+                <ArrowUp className="w-4 h-4" />
+                <span className="sr-only">Send</span>
+              </Button>
             </div>
-            </CardContent>
-          </Card>
+          </div>
         </section>
         <section>
           <div className="mt-6">
-            <div className="p-4">
+            {/* TODO: Evaluate if this is needed */}
+            {/* <div className="p-4">
               { promptInput && (
                 <div>
                   <h3 className="text-lg font-medium truncate">Prompt Area</h3>
@@ -67,8 +74,8 @@ export default function Home() {
                   </p>
                 </div>
               )}
-            </div>
-            {isLoading ? "Fetching data...." : getPromptResult(data)}
+            </div> */}
+            {isLoading ? renderSpinner() : getPromptResult(data)}
           </div>
         </section>
       </div>
