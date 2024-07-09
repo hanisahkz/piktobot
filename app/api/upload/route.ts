@@ -8,10 +8,8 @@ export const runtime = 'edge'
 export async function POST(request: NextRequest) {
     const nanoid = customAlphabet('1234567890qwertyuiopasdfghjklzxcvbnm', 32);
     const fileName = `${nanoid()}.png`;
-    // const file = await readFile("/Users/amirulzharfanbin/projects/piktobot/app/walking-tree.png");
     const file = await fetch("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrWGnkEWaaNZjJTYAVRWZwi1ehw0muzeOnwg&s");
 
-    // console.log(file);
     await getRequestContext().env.R2.put(fileName, await file.blob());
 
     return NextResponse.json({

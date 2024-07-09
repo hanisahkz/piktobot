@@ -37,14 +37,17 @@ export async function POST(request: NextRequest) {
     {
       prompt,
     }
-  );
+  ) as any as ReadableStream;
+
+  console.log('response - ', JSON.stringify(await response.getReader().read()));
 
   const nanoid = customAlphabet('1234567890qwertyuiopasdfghjklzxcvbnm', 32);
   const fileName = `${nanoid()}.png`;
-  const fileBlob = new Blob([response.buffer], { type: "image/png" });
-  await getRequestContext().env.R2.put(fileName, fileBlob);
+  // const fileBlob = new Blob([await response.getReader().read()], { type: "image/png" });
+  // await getRequestContext().env.R2.put(fileName, fileBlob);
 
   return NextResponse.json({
-    file: fileName
+    file: fileName,
+    // fileBlob,
   });
 }
