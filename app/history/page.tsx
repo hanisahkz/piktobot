@@ -1,6 +1,7 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Image from 'next/image'
 
+// TODO: put in a common folder
 type PromptHistory = {
     id: number,
     prompt: string,

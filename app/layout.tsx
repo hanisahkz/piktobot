@@ -31,13 +31,13 @@ export default function RootLayout({
     <QueryClientProvider client={queryClient}>
       <html lang="en">
         <body className={`${inter.className} antialiased` }>
-          <div className="flex items-center justify-center gap-4 p-24">
+          <div className="flex items-center justify-center gap-4 p-16">
             {links.map((link, index) => (
                 <Link
                   href={link.href}
                   key={link.href}
                   className={clsx(
-                    'flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-cf-orange-2 md:flex-none md:justify-start md:p-2 md:px-3',
+                    'flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-m font-medium hover:text-cf-orange-2 md:flex-none md:justify-start md:p-2 md:px-3',
                     {
                       'text-cf-orange-1': pathname === link.href,
                     },

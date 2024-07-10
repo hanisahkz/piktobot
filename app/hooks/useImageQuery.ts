@@ -1,3 +1,4 @@
+// Example hook implementation
 import ky from 'ky'
 import { useQuery } from '@tanstack/react-query'
 
