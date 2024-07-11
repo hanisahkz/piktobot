@@ -2,7 +2,6 @@
  
 import { useState } from "react"
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowUp } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -74,7 +73,7 @@ export default function Home() {
           <Skeleton className="h-4 w-[200px] bg-slate-200 w-full" />
           <Skeleton className="h-4 w-[200px] bg-slate-200 w-full" />
         </div>
-    </div>
+      </div>
     )
   }
 

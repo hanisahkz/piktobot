@@ -32,7 +32,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${inter.className} antialiased` }>
           <div className="flex items-center justify-center gap-4 p-16">
-            {links.map((link, index) => (
+            {links.map((link) => (
                 <Link
                   href={link.href}
                   key={link.href}
